@@ -1,0 +1,50 @@
+    <div class="row">
+@for(p of filterdList ; track p.id){
+    <div class="card col-6 m-3" style="width: 18rem;" [appLightBox] = "isNight"  >
+  <img appZoom src="{{p.image}}" class="card-img-top" alt="{{p.title}}">
+  <div class="card-body">
+    <h5 class="card-title">{{p.title}}</h5>
+    <p class="card-text">
+    @if(p.seeMore){
+      {{p.description}}
+    }
+    @else{
+      {{p.description | threeWords:3 }} 
+    }
+    @if(p.description.split(' ').length > 3){
+      <a href="#" (click)="p.seeMore = !p.seeMore">{{ p.seeMore ? 'See Less' : 'See More' }}</a>
+    }
+    </p>
+    <div class="justify-content-between ">
+    </div>
+    <div class="justify-content-between " style="width: 100%;" >
+    <span class="badge bg-success  ">{{p.price}}</span> 
+    <span style="margin-left: 4px; margin-right: 4px;" >{{p.quantity>=1 ? 'in Stock:' :" " }}</span> 
+     <span class="badge bg-secondary">
+  {{ p.quantity === 0 ? 'out of stock' : p.quantity === 1 ? 'only 1 left' : p.quantity + ' items left' }}
+</span> 
+<div class="mt-2">
+  <input 
+    #countInput
+    type="number" 
+    class="form-control" 
+    style="width: 100px; display: inline-block; margin-top: 10px; margin-right: 5px;" 
+    [disabled]="p.quantity === 0" 
+    min="1" 
+    [max]="p.quantity" 
+    (input)="validateQuantity($event, p.quantity)"
+  >
+  
+  <button 
+    class="btn btn-success"
+    [disabled]="p.quantity === 0"
+    (click)="buyProduct(p, countInput.value)">
+    Buy
+  </button>
+</div>
+</div>
+</div>
+
+</div>
+}
+</div>

@@ -1,0 +1,8 @@
+<select class="form-select m-2 " aria-label="Default select example" style="width: 90%;"
+ (change)="onCategoryChange($event)"  >
+  <option selected value="0" >All</option>
+ @for(c of productCategory ; track c.id){
+   <option value="{{c.id}}">{{c.name}}</option> 
+ }
+
+</select>

@@ -1,0 +1,9 @@
+.dark{
+    background-color: #333 !important;
+    color: #fff !important ;
+}
+.light-box{
+    border: 2px solid #333 !important ;
+    padding: 10px !important ;
+    margin: 10px !important ;
+}

@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+.card.dark {
+  background-color: #333333 !important;
+  color: #ffffff !important;
+}
+
+
+.card.light-box {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
